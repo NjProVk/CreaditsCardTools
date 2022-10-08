@@ -82,7 +82,7 @@ Card generate, Card Validator, Credit card generate, Credit card validator
 ```
 True
 ```
->**CardValidator** принимает 1 аргумент:
+>**CardValidator** takes 1 arguments:
 >  <li>card_number = Accepts card number</li>
 >***luhnValidator***:
 >  Checks via the moon algorithm</li>
@@ -105,7 +105,7 @@ MasterCard
 >***cardInfo***:
 >  Shows map information</li>
 
-# Russia
+# Russian
 #### Установка:
 <li><code>pip install requests</code></li>
 
