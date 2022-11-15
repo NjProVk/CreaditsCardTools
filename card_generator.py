@@ -43,7 +43,7 @@ class GetGenerate:
                     card_ids = card_ids[:-4]
                     template_base = ' '.join(out[::-1])
                 jValue = {idList: {"card": template_base,
-                                   "date": card_list[idList]['date'],
+                                   "data": card_list[idList]['data'],
                                    "csv": card_list[idList]['csv']}}
                 self.beautiful_card.update(jValue)
         return self.beautiful_card
@@ -58,7 +58,7 @@ class GetGenerate:
                         if CardValidator(card_number).luhnValidator():
                             data_value = int(datetime.now().strftime("%y")) + random.randint(2, 6)
                             json_value = {x: {"card": f"{card_number}",
-                                              "date": f"{random.randint(10, 28)}/{data_value}",
+                                              "data": f"0{random.randint(1, 10)}/{data_value}",
                                               "csv": random.randint(111, 999)}}
                             self.ready_card.update(json_value)
                             break
@@ -68,7 +68,7 @@ class GetGenerate:
                         if CardValidator(card_number).luhnValidator():
                             data_value = int(datetime.now().strftime("%y")) + random.randint(2, 6)
                             json_value = {x: {"card": f"{card_number}",
-                                              "date": f"{random.randint(10, 28)}/{data_value}",
+                                              "data": f"0{random.randint(1, 10)}/{data_value}",
                                               "csv": random.randint(111, 999)}}
                             self.ready_card.update(json_value)
                             break
@@ -83,7 +83,7 @@ class GetGenerate:
                         if CardValidator(card_number).luhnValidator():
                             data_value = int(datetime.now().strftime("%y")) + random.randint(2, 6)
                             json_value = {x: {"card": f"{card_number}",
-                                              "date": f"{random.randint(10, 28)}/{data_value}",
+                                              "data": f"0{random.randint(1, 10)}/{data_value}",
                                               "csv": random.randint(111, 9999)}}
                             self.ready_card.update(json_value)
                             break
@@ -93,7 +93,7 @@ class GetGenerate:
                         if CardValidator(card_number).luhnValidator():
                             data_value = int(datetime.now().strftime("%y")) + random.randint(2, 6)
                             json_value = {x: {"card": f"{card_number}",
-                                              "date": f"{random.randint(10, 28)}/{data_value}",
+                                              "data": f"0{random.randint(1, 10)}/{data_value}",
                                               "csv": random.randint(111, 999)}}
                             self.ready_card.update(json_value)
                             break
@@ -104,6 +104,6 @@ class GetGenerate:
             jsonInfoBank = {}
             for card_id in self.ready_card:
                 ready_info = CardValidator(self.ready_card[card_id]['card']).cardInfo()
-                jsonInfoBank.update({card_id: {"data": self.ready_card[card_id], "info": ready_info}})
+                jsonInfoBank.update({card_id: {"value": self.ready_card[card_id], "info": ready_info}})
             self.ready_card = jsonInfoBank
         return self.ready_card
