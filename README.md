@@ -176,3 +176,17 @@ Card type: visa
 BIN Info:
 {'brand': 'VISA', 'type': 'DEBIT', 'category': 'CLASSIC', 'country': 'Russian Federation', 'country_code': 'RU', 'bank': 'SBERBANK', 'bank_url': 'www.sberbank.ru', 'bank_phone': '+7-495-500-55-50'}
 ```
+
+---
+
+## Acknowledgements / Источник данных
+
+This project utilizes the BIN list data provided by the `bin-list-data` project, which is maintained by venelinkochev and contributors. The data is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+
+-   **Source:** [github.com/venelinkochev/bin-list-data](https://github.com/venelinkochev/bin-list-data)
+
+---
+
+Этот проект использует данные из списка BIN, предоставленные проектом `bin-list-data` под руководством venelinkochev и его соавторов. Данные распространяются по лицензии [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+
+-   **Источник:** [github.com/venelinkochev/bin-list-data](https://github.com/venelinkochev/bin-list-data)
