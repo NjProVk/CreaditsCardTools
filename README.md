@@ -1,211 +1,178 @@
-### CreditCardTools
-Card generate, Card Validator, Credit card generate, Credit card validator
+# Card Toolkit
 
-# English
-#### Install:
-<li><code>pip install requests</code></li>
+[![PyPI version](https://badge.fury.io/py/card_generator.svg)](https://badge.fury.io/py/card_generator)
+[![CI Tests](https://github.com/NjProVk/CreaditsCardTools/actions/workflows/ci.yml/badge.svg)](https://github.com/NjProVk/CreaditsCardTools/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/pypi/l/card_generator)](https://opensource.org/licenses/MIT)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/card_generator)](https://pypi.org/project/card_generator/)
 
-<div align="center">Example</div>
+A powerful and dependency-free Python library to generate and validate credit card numbers. It uses a local, offline BIN database for fast and reliable bank and country lookups without needing API keys or internet access.
 
-##### Generator:
-``` python
-  from card_generator import GetGenerate
-  GetGenerate(count=5, credit_type="MasterCard").getCard()
-```
-``` json
-{"0": {"card": "52211052867270784", "data": "19/26", "csv": 176}, "1": {"card": "54457684365763339", "data": "25/24", "csv": 784}, "2": {"card": "54975537055351307", "data": "23/28", "csv": 315}, "3": {"card": "54825897202914387", "data": "10/25", "csv": 251}, "4": {"card": "53299342982928538", "data": "14/27", "csv": 774}}
-```
->**GetGenerate** takes 2 arguments:
->  <li>count = Number of generations</li>
->  <li>credit_type = Card type (Visa, MasterCard, amex, discover)</li>
-``` python
-  from card_generator import GetGenerate
-  GetGenerate(5, "MasterCard").getCard(beautiful_card=True)
-```
+<details>
+<summary><strong>Русская версия</strong></summary>
 
-``` json
-{"0": {"card": "5427 9493 2235 6058", "data": "28/26", "csv": 264}, "1": {"card": "5562 7269 6515 5947", "data": "10/24", "csv": 874}, "2": {"card": "5334 6133 4766 5446", "data": "16/25", "csv": 704}, "3": {"card": "5442 8957 2666 9151", "data": "11/24", "csv": 747}, "4": {"card": "5486 9757 3211 5899", "data": "10/24", "csv": 428}}
-```
+Мощная и не имеющая зависимостей Python-библиотека для генерации и валидации номеров кредитных карт. Использует локальную офлайн-базу данных BIN для быстрого и надежного определения банка и страны без необходимости в API-ключах или доступе в интернет.
+</details>
 
-``` python
-  from card_generator import GetGenerate
-  GetGenerate(5, "MasterCard").getCard(bank_info=True)
-```
+---
 
-``` json
-{"0": {"data": {"card": "5481022800389703", "data": "24/26", "csv": 387}, "info": {"type": "credit", "country": "Italy", "currency": "EUR", "short": "IT", "bank_name": "BANCA MONTE DEI PASCHI DI SIENA", "bank_phone": "577.294111", "bank_url": "www.mps.it"}}, "1": {"data": {"card": "5325911497824370", "data": "19/27", "csv": 305}, "info": {"type": "debit", "country": "United States of America", "currency": "USD", "short": "US", "bank_name": "FIDELITY INFORMATION SERVICES, INC.", "bank_phone": "888.323.0310", "bank_url": "www.fisglobal.com"}}, "2": {"data": {"card": "5179502864067664", "data": "16/26", "csv": 121}, "info": {"type": "credit", "country": "United States of America", "currency": "USD", "short": "US", "bank_name": "CITIBANK (SOUTH DAKOTA), N.A.", "bank_phone": "(605) 331-2626", "bank_url": "online.citibank.com"}}, "3": {"data": {"card": "5455820810161638", "data": "20/26", "csv": 217}, "info": {"country": "United States of America", "currency": "USD", "short": "US", "bank_name": "MELLON BANK, N.A.", "bank_phone": "(412) 236-3338"}}, "4": {"data": {"card": "5459496697261613", "data": "19/28", "csv": 917}, "info": {"type": "credit", "country": "Montenegro", "currency": "EUR", "short": "ME", "bank_name": "ATLAS BANKA A.D.", "bank_phone": "382 20 407 200", "bank_url": "www.atlasbanka.com"}}, "5": {"data": {"card": "5119641730184007", "data": "26/24", "csv": 647}, "info": {"type": "debit", "country": "United States of America", "currency": "USD", "short": "US", "bank_name": "COMPUTER SERVICES, INC.", "bank_phone": "(800) 545 4274", "bank_url": "www.csiweb.com"}}, "6": {"data": {"card": "5242172516811381", "data": "18/25", "csv": 950}, "info": {"type": "credit", "country": "Taiwan, Province of China[a]", "currency": "TWD", "short": "TW", "bank_name": "SUNNY BANK"}}, "7": {"data": {"card": "5468541498888178", "data": "26/27", "csv": 653}, "info": {"country": "United States of America", "currency": "USD", "short": "US", "bank_name": "PNC BANK, N.A.", "bank_phone": "888-762-2265", "bank_url": "www.pnc.com"}}, "8": {"data": {"card": "5543628362957384", "data": "26/26", "csv": 120}, "info": {"type": "credit", "country": "Russian Federation", "currency": "RUB", "short": "RU", "bank_name": "VTB BANK OJSC", "bank_phone": "(800) 100-24-24", "bank_url": "www.vtb.com"}}, "9": {"data": {"card": "5517546715162704", "data": "18/28", "csv": 199}, "info": {"type": "debit", "country": "United States of America", "currency": "USD", "short": "US", "bank_name": "STAR PROCESSING, INC.", "bank_phone": "+1 (416) 535-2424", "bank_url": "www.starprocessing.com"}}}
-```
+## Key Features
 
-``` python
-  from card_generator import GetGenerate
-  GetGenerate(5, "MasterCard").getCard(bank_info=True, beautiful_card=True)
+-   **Generate Valid Cards**: Creates credit card numbers that pass the Luhn algorithm check for various schemes (Visa, MasterCard, Amex, Discover).
+-   **Offline BIN Lookup**: Includes a local BIN database to retrieve card details like brand, type, country, and bank issuer.
+-   **No Dependencies**: The core logic has zero external dependencies, making it lightweight and easy to integrate.
+-   **No API Keys Required**: All lookups are performed locally, so you don't need to sign up for services or manage secret keys.
+-   **Modern and Clean API**: Designed with clear, predictable methods and properties.
+-   **Fully Typed**: Provides full type hinting for better autocompletion and static analysis.
+
+## Installation
+
+You can install the library from PyPI using `pip` or any other modern package manager like `uv`.
+
+#### Using `pip`
+
+```bash
+# On Windows
+py -m pip install card_generator
+
+# On Linux/macOS
+python3 -m pip install card_generator
 ```
 
-``` json
-{0: {'data': {'card': '5537 6807 2093 2474', 'data': '23/24', 'csv': 612}, 'info': {'type': 'debit', 'country': 'United States of America', 'currency': 'USD', 'short': 'US', 'bank_name': 'FIDELITY INFORMATION SERVICES, INC.', 'bank_phone': '888.323.0310', 'bank_url': 'www.fisglobal.com'}}, 1: {'data': {'card': '5365 8857 3211 4428', 'data': '23/28', 'csv': 767}, 'info': {'type': 'credit', 'country': 'Brazil', 'currency': 'BRL', 'short': 'BR', 'bank_name': 'BANCO IBI S.A. BANCO MULTIPLO'}}, 2: {'data': {'card': '5148 6733 7784 8383', 'data': '22/24', 'csv': 795}, 'info': {'type': 'credit', 'country': 'United States of America', 'currency': 'USD', 'short': 'US', 'bank_name': 'US AIRWAYS DIVIDEND MILES', 'bank_phone': '800-428-4322', 'bank_url': 'www.usairways.com'}}, 3: {'data': {'card': '5343 8287 2801 9281', 'data': '18/25', 'csv': 547}, 'info': {'type': 'credit', 'country': 'United States of America', 'currency': 'USD', 'short': 'US'}}, 4: {'data': {'card': '5484 5588 5415 7733', 'data': '22/28', 'csv': 721}, 'info': {'type': 'credit', 'country': 'Russian Federation', 'currency': 'RUB', 'short': 'RU', 'bank_name': 'SAVINGS BANK OF THE RUSSIAN FEDERATION (SBERBANK)', 'bank_url': 'www.sbrf.ru'}}, 5: {'data': {'card': '5218 4647 0290 7234', 'data': '21/24', 'csv': 926}, 'info': {'type': 'credit', 'country': 'United States of America', 'currency': 'USD', 'short': 'US', 'bank_name': 'DIAMOND C.U.', 'bank_phone': '800.593.1000', 'bank_url': 'www.diamondcu.org'}}, 6: {'data': {'card': '5140 6522 8899 6802', 'data': '25/25', 'csv': 248}, 'info': {'type': 'credit', 'country': 'Russian Federation', 'currency': 'RUB', 'short': 'RU'}}, 7: {'data': {'card': '5392 8812 7130 5516', 'data': '22/27', 'csv': 953}, 'info': {'type': 'debit', 'country': 'Puerto Rico', 'currency': 'USD', 'short': 'PR'}}, 8: {'data': {'card': '5243 0860 8073 8821', 'data': '15/26', 'csv': 293}, 'info': {'type': 'debit', 'country': 'Costa Rica', 'currency': 'CRC', 'short': 'CR', 'bank_name': 'BANCO NACIONAL DE COSTA RICA', 'bank_phone': '(506)2211-2000', 'bank_url': 'www.bnonline.fi.cr'}}, 9: {'data': {'card': '5571 3570 6568 2231', 'data': '23/26', 'csv': 532}, 'info': {'type': 'credit', 'country': 'United States of America', 'currency': 'USD', 'short': 'US', 'bank_name': 'CITIBANK, N.A.', 'bank_phone': '1-800-374-9700', 'bank_url': 'online.citibank.com'}}}
+#### Using `uv`
+
+`uv` is an extremely fast, next-generation Python package installer.
+
+```bash
+# Install into your virtual environment (recommended)
+uv pip install card_generator
+
+# Or, if you need to install it system-wide (use with caution)
+uv pip install --system card_generator
 ```
 
->***getCard*** takes 2 arguments:
->  <li>beautiful_card = From xxxxxxxxxxxxxxxx to xxxx xxxx xxxx xxxx</li>
->  <li>bank_info = Card Information</li>
+## Usage Examples
 
-``` python
-  from card_generator import GetGenerate
-  GetGenerate().cardInfo(card_list=[5336897708041895, 5172409174953004])
-```
+Here are some examples of how to use the library's main features.
 
-``` json
-{"5336897708041895": {"type": "credit", "country": "Russian Federation", "currency": "RUB", "short": "RU", "bank_name": "JSC RUSSIAN STANDARD BANK", "bank_phone": "7 7272 58 15 05", "bank_url": "www.rsb.ru"}, "5172409174953004": {"type": "credit", "country": "United States of America", "currency": "USD", "short": "US", "bank_name": "FIRST DATA CORPORATION", "bank_phone": "+1 888-477-3611", "bank_url": "www.firstdata.com"}}
-```
+### 1. Generating Credit Cards
 
+Use the `CardGenerator` class to create one or more cards.
 
->***card_list*** takes 1 arguments:
->  <li>card_list = Accepts a list</li>
+```python
+from card_generator import CardGenerator
 
-``` python
-  from card_generator import GetGenerate
-  GetGenerate().beautifulCard(card_list=[5336897708041895, 5172409174953004])
+# Initialize a generator for MasterCard
+mastercard_generator = CardGenerator("mastercard")
+
+# Generate 3 standard cards
+cards = mastercard_generator.generate(count=3)
+print(cards)
 ```
 
-``` list
-['5336 8977 0804 1895', '5172 4091 7495 3004']
+**Example Output:**
+
+```json
+[
+  {
+    "card": "5486241234567890",
+    "expiry_date": "07/28",
+    "cvv": 451
+  },
+  {
+    "card": "5179509876543210",
+    "expiry_date": "11/29",
+    "cvv": 812
+  },
+  {
+    "card": "5543620011223344",
+    "expiry_date": "02/27",
+    "cvv": 123
+  }
+]
 ```
 
->***card_list*** takes 1 arguments:
->  <li>card_list = Accepts a list</li>
+#### Generation with Options
 
-##### Validation:
-``` python
-  from card_validator import CardValidator
-  CardValidator(card_number="5587896270574735").luhnValidator()
-```
-```
-True
-```
->**CardValidator** takes 1 arguments:
->  <li>card_number = Accepts card number</li>
->***luhnValidator***:
->  Checks via the moon algorithm</li>
-``` python
-  from card_validator import CardValidator
-  CardValidator(card_number="5587896270574735").cardType()
-```
-```
-MasterCard
-```
->***cardType***:
->  What type of card</li>
-``` python
-  from card_validator import CardValidator
-  CardValidator(card_number="5587896270574735").cardInfo()
-```
-``` json
-{"type": null, "country": "United States of America", "currency": "USD", "short": "US"}
-```
->***cardInfo***:
->  Shows map information</li>
+You can generate cards with formatted numbers and include bank information.
 
-# Russian
-#### Установка:
-<li><code>pip install requests</code></li>
+```python
+from card_generator import CardGenerator
+import json
 
-<div align="center">Примеры</div>
+amex_generator = CardGenerator("amex")
 
-##### Генератор:
-``` python
-  from card_generator import GetGenerate
-  GetGenerate(count=5, credit_type="MasterCard")
-```
-``` json
-{"0": {"card": "52211052867270784", "data": "19/26", "csv": 176}, "1": {"card": "54457684365763339", "data": "25/24", "csv": 784}, "2": {"card": "54975537055351307", "data": "23/28", "csv": 315}, "3": {"card": "54825897202914387", "data": "10/25", "csv": 251}, "4": {"card": "53299342982928538", "data": "14/27", "csv": 774}}
-```
->**GetGenerate** принимает 2 аргумента:
->  <li>count = Число генераций</li>
->  <li>credit_type = Тип карты (Visa, MasterCard, amex, discover)</li>
+# Generate 2 cards with formatting and bank info
+pretty_cards = amex_generator.generate(
+    count=2,
+    beautiful_format=True,
+    include_bank_info=True
+)
 
-``` python
-  from card_generator import GetGenerate
-  GetGenerate(5, "MasterCard").getCard(beautiful_card=True)
+print(json.dumps(pretty_cards, indent=2))
 ```
 
-``` json
-{"0": {"card": "5427 9493 2235 6058", "data": "28/26", "csv": 264}, "1": {"card": "5562 7269 6515 5947", "data": "10/24", "csv": 874}, "2": {"card": "5334 6133 4766 5446", "data": "16/25", "csv": 704}, "3": {"card": "5442 8957 2666 9151", "data": "11/24", "csv": 747}, "4": {"card": "5486 9757 3211 5899", "data": "10/24", "csv": 428}}
+**Example Output:**
+
+```json
+[
+  {
+    "card": "3782 822463 10005",
+    "expiry_date": "05/30",
+    "cvv": 8812,
+    "info": {
+      "brand": "AMERICAN EXPRESS",
+      "type": "CREDIT",
+      "category": "",
+      "country": "United States",
+      "country_code": "US",
+      "bank": "AMERICAN EXPRESS",
+      "bank_url": "www.americanexpress.com",
+      "bank_phone": ""
+    }
+  },
+  {
+    "card": "3412 345678 90127",
+    "expiry_date": "12/28",
+    "cvv": 1234,
+    "info": null
+  }
+]
+```
+*(Note: `info` will be `null` if the generated BIN is not found in the local database.)*
+
+---
+
+### 2. Validating Credit Cards
+
+Use the `CardValidator` class to check card numbers and get details.
+
+```python
+from card_generator import CardValidator
+
+# A valid Visa card number
+card_number = "4539920412345671"
+
+# Initialize the validator
+validator = CardValidator(card_number)
+
+# --- Check Validity ---
+print(f"Is Luhn valid? {validator.is_luhn_valid()}")
+
+# --- Get Card Type ---
+# This is a property, not a method
+print(f"Card type: {validator.card_type}")
+
+# --- Get All Available BIN Info ---
+info = validator.get_bin_info()
+print("BIN Info:")
+print(info)
 ```
 
-``` python
-  from card_generator import GetGenerate
-  GetGenerate(5, "MasterCard").getCard(bank_info=True)
-```
+**Example Output:**
 
-``` json
-{"0": {"data": {"card": "5481022800389703", "data": "24/26", "csv": 387}, "info": {"type": "credit", "country": "Italy", "currency": "EUR", "short": "IT", "bank_name": "BANCA MONTE DEI PASCHI DI SIENA", "bank_phone": "577.294111", "bank_url": "www.mps.it"}}, "1": {"data": {"card": "5325911497824370", "data": "19/27", "csv": 305}, "info": {"type": "debit", "country": "United States of America", "currency": "USD", "short": "US", "bank_name": "FIDELITY INFORMATION SERVICES, INC.", "bank_phone": "888.323.0310", "bank_url": "www.fisglobal.com"}}, "2": {"data": {"card": "5179502864067664", "data": "16/26", "csv": 121}, "info": {"type": "credit", "country": "United States of America", "currency": "USD", "short": "US", "bank_name": "CITIBANK (SOUTH DAKOTA), N.A.", "bank_phone": "(605) 331-2626", "bank_url": "online.citibank.com"}}, "3": {"data": {"card": "5455820810161638", "data": "20/26", "csv": 217}, "info": {"country": "United States of America", "currency": "USD", "short": "US", "bank_name": "MELLON BANK, N.A.", "bank_phone": "(412) 236-3338"}}, "4": {"data": {"card": "5459496697261613", "data": "19/28", "csv": 917}, "info": {"type": "credit", "country": "Montenegro", "currency": "EUR", "short": "ME", "bank_name": "ATLAS BANKA A.D.", "bank_phone": "382 20 407 200", "bank_url": "www.atlasbanka.com"}}, "5": {"data": {"card": "5119641730184007", "data": "26/24", "csv": 647}, "info": {"type": "debit", "country": "United States of America", "currency": "USD", "short": "US", "bank_name": "COMPUTER SERVICES, INC.", "bank_phone": "(800) 545 4274", "bank_url": "www.csiweb.com"}}, "6": {"data": {"card": "5242172516811381", "data": "18/25", "csv": 950}, "info": {"type": "credit", "country": "Taiwan, Province of China[a]", "currency": "TWD", "short": "TW", "bank_name": "SUNNY BANK"}}, "7": {"data": {"card": "5468541498888178", "data": "26/27", "csv": 653}, "info": {"country": "United States of America", "currency": "USD", "short": "US", "bank_name": "PNC BANK, N.A.", "bank_phone": "888-762-2265", "bank_url": "www.pnc.com"}}, "8": {"data": {"card": "5543628362957384", "data": "26/26", "csv": 120}, "info": {"type": "credit", "country": "Russian Federation", "currency": "RUB", "short": "RU", "bank_name": "VTB BANK OJSC", "bank_phone": "(800) 100-24-24", "bank_url": "www.vtb.com"}}, "9": {"data": {"card": "5517546715162704", "data": "18/28", "csv": 199}, "info": {"type": "debit", "country": "United States of America", "currency": "USD", "short": "US", "bank_name": "STAR PROCESSING, INC.", "bank_phone": "+1 (416) 535-2424", "bank_url": "www.starprocessing.com"}}}
 ```
-
-``` python
-  from card_generator import GetGenerate
-  GetGenerate(5, "MasterCard").getCard(bank_info=True, beautiful_card=True)
+Is Luhn valid? True
+Card type: visa
+BIN Info:
+{'brand': 'VISA', 'type': 'DEBIT', 'category': 'CLASSIC', 'country': 'Russian Federation', 'country_code': 'RU', 'bank': 'SBERBANK', 'bank_url': 'www.sberbank.ru', 'bank_phone': '+7-495-500-55-50'}
 ```
-
-``` json
-{0: {'data': {'card': '5537 6807 2093 2474', 'data': '23/24', 'csv': 612}, 'info': {'type': 'debit', 'country': 'United States of America', 'currency': 'USD', 'short': 'US', 'bank_name': 'FIDELITY INFORMATION SERVICES, INC.', 'bank_phone': '888.323.0310', 'bank_url': 'www.fisglobal.com'}}, 1: {'data': {'card': '5365 8857 3211 4428', 'data': '23/28', 'csv': 767}, 'info': {'type': 'credit', 'country': 'Brazil', 'currency': 'BRL', 'short': 'BR', 'bank_name': 'BANCO IBI S.A. BANCO MULTIPLO'}}, 2: {'data': {'card': '5148 6733 7784 8383', 'data': '22/24', 'csv': 795}, 'info': {'type': 'credit', 'country': 'United States of America', 'currency': 'USD', 'short': 'US', 'bank_name': 'US AIRWAYS DIVIDEND MILES', 'bank_phone': '800-428-4322', 'bank_url': 'www.usairways.com'}}, 3: {'data': {'card': '5343 8287 2801 9281', 'data': '18/25', 'csv': 547}, 'info': {'type': 'credit', 'country': 'United States of America', 'currency': 'USD', 'short': 'US'}}, 4: {'data': {'card': '5484 5588 5415 7733', 'data': '22/28', 'csv': 721}, 'info': {'type': 'credit', 'country': 'Russian Federation', 'currency': 'RUB', 'short': 'RU', 'bank_name': 'SAVINGS BANK OF THE RUSSIAN FEDERATION (SBERBANK)', 'bank_url': 'www.sbrf.ru'}}, 5: {'data': {'card': '5218 4647 0290 7234', 'data': '21/24', 'csv': 926}, 'info': {'type': 'credit', 'country': 'United States of America', 'currency': 'USD', 'short': 'US', 'bank_name': 'DIAMOND C.U.', 'bank_phone': '800.593.1000', 'bank_url': 'www.diamondcu.org'}}, 6: {'data': {'card': '5140 6522 8899 6802', 'data': '25/25', 'csv': 248}, 'info': {'type': 'credit', 'country': 'Russian Federation', 'currency': 'RUB', 'short': 'RU'}}, 7: {'data': {'card': '5392 8812 7130 5516', 'data': '22/27', 'csv': 953}, 'info': {'type': 'debit', 'country': 'Puerto Rico', 'currency': 'USD', 'short': 'PR'}}, 8: {'data': {'card': '5243 0860 8073 8821', 'data': '15/26', 'csv': 293}, 'info': {'type': 'debit', 'country': 'Costa Rica', 'currency': 'CRC', 'short': 'CR', 'bank_name': 'BANCO NACIONAL DE COSTA RICA', 'bank_phone': '(506)2211-2000', 'bank_url': 'www.bnonline.fi.cr'}}, 9: {'data': {'card': '5571 3570 6568 2231', 'data': '23/26', 'csv': 532}, 'info': {'type': 'credit', 'country': 'United States of America', 'currency': 'USD', 'short': 'US', 'bank_name': 'CITIBANK, N.A.', 'bank_phone': '1-800-374-9700', 'bank_url': 'online.citibank.com'}}}
-```
-
->***getCard*** принимает 2 аргумента:
->  <li>beautiful_card = Из xxxxxxxxxxxxxxxx к xxxx xxxx xxxx xxxx</li>
->  <li>bank_info = Информация по карте</li>
-
-``` python
-  from card_generator import GetGenerate
-  GetGenerate().cardInfo(card_list=[5336897708041895, 5172409174953004])
-```
-
-``` json
-{"5336897708041895": {"type": "credit", "country": "Russian Federation", "currency": "RUB", "short": "RU", "bank_name": "JSC RUSSIAN STANDARD BANK", "bank_phone": "7 7272 58 15 05", "bank_url": "www.rsb.ru"}, "5172409174953004": {"type": "credit", "country": "United States of America", "currency": "USD", "short": "US", "bank_name": "FIRST DATA CORPORATION", "bank_phone": "+1 888-477-3611", "bank_url": "www.firstdata.com"}}
-```
-
-
->***card_list*** принимает 1 аргумент:
->  <li>card_list = Принимает список</li>
-
-``` python
-  from card_generator import GetGenerate
-  GetGenerate().beautifulCard(card_list=[5336897708041895, 5172409174953004])
-```
-
-``` list
-['5336 8977 0804 1895', '5172 4091 7495 3004']
-```
-
->***card_list*** принимает 1 аргумент:
->  <li>card_list = Принимает список</li>
-
-##### Валидация:
-``` python
-  from card_validator import CardValidator
-  CardValidator(card_number="5587896270574735").luhnValidator()
-```
-```
-True
-```
->**CardValidator** принимает 1 аргумент:
->  <li>card_number = Принимает номер карты</li>
->***luhnValidator***:
->  Проверяет через алгоритм луны</li>
-``` python
-  from card_validator import CardValidator
-  CardValidator(card_number="5587896270574735").cardType()
-```
-```
-MasterCard
-```
->***cardType***:
->  Какой тип карты</li>
-``` python
-  from card_validator import CardValidator
-  CardValidator(card_number="5587896270574735").cardInfo()
-```
-``` json
-{"type": null, "country": "United States of America", "currency": "USD", "short": "US"}
-```
->***cardInfo***:
->  Показывает информацию по карте</li>

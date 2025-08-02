@@ -1,0 +1,84 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "card_generator"
+
+version = "0.1.0"
+
+authors = [
+  { name="NjProVk", email="njprovk@gmail.com" },
+]
+
+description = "A library to generate and validate credit card numbers with local BIN lookup."
+
+readme = "README.md"
+
+requires-python = ">=3.8"
+
+license = { file="MIT" }
+
+keywords = [
+    "credit card",
+    "card generator",
+    "card validator",
+
+    "luhn",
+    "luhn algorithm",
+    "bin",
+    "bin lookup",
+    "bin checker",
+    "iin",
+
+    "generate",
+    "generator",
+    "validate",
+    "validator",
+    "validation",
+
+    "visa",
+    "mastercard",
+    "amex",
+    "discover",
+
+    "fintech",
+    "payment",
+    "ecommerce",
+    "test data",
+    "mock data",
+    "fake data",
+
+    "offline",
+    "no-api",
+    "local-database"
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+]
+
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/NjProVk/CreaditsCardTools"
+"Bug Tracker" = "https://github.com/NjProVk/CreaditsCardTools/issues"
+
+
+[tool.setuptools]
+
+[tool.setuptools.packages.find]
+
+[tool.setuptools.package-data]
+"card_generator" = ["*.csv"]
