@@ -1,8 +1,8 @@
 # Card Toolkit
 
 [![PyPI version](https://badge.fury.io/py/card-generator.svg)](https://badge.fury.io/py/card-generator)
-[![CI Tests](https://github.com/NjProVk/CreaditsCardTools/actions/workflows/ci.yml/badge.svg)](https://github.com/NjProVk/CreaditsCardTools/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/pypi/l/card-generator)](https://github.com/NjProVk/CreaditsCardTools/blob/main/LICENSE)
+[![CI Tests](https://github.com/NjProVk/CreditsCardTools/actions/workflows/ci.yml/badge.svg)](https://github.com/NjProVk/CreditsCardTools/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/pypi/l/card-generator)](https://github.com/NjProVk/CreditsCardTools/blob/main/LICENSE)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/card-generator)](https://pypi.org/project/card-generator/)
 
 A powerful and dependency-free Python library to generate and validate credit card numbers. It uses a local, offline BIN database for fast and reliable bank and country lookups without needing API keys or internet access.
