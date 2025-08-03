@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "card_generator"
 
-version = "0.1.5"
+version = "0.1.6"
 
 authors = [
   { name="NjProVk", email="njprovk@gmail.com" },
