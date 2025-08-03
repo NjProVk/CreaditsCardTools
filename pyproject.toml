@@ -73,8 +73,8 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Homepage = "https://github.com/NjProVk/CreaditsCardTools"
-"Bug Tracker" = "https://github.com/NjProVk/CreaditsCardTools/issues"
+Homepage = "https://github.com/NjProVk/CreditsCardTools"
+"Bug Tracker" = "https://github.com/NjProVk/CreditsCardTools/issues"
 
 
 [tool.setuptools]
